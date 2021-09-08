@@ -1,0 +1,140 @@
+/* GENERAL */
+
+*
+{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+body 
+{
+    font-family: Arial,sans-serif;
+    font-size: 15px;
+}
+
+header nav
+{
+    float: left;   
+    margin-top: 60px;
+    margin-left: 50px;
+}
+header nav ul li, .button-connexion
+{
+    display: inline-block;
+    text-transform: uppercase;
+    text-underline-offset: unset;
+    font-weight: bold;
+    margin-right: 20px;
+}
+header nav ul li a
+{
+    text-decoration: none;
+    color: #444;
+}
+
+.accueil
+{
+    color: #7E9BBF;
+}
+
+.banner
+{
+
+    width: 99%;
+    float: left;
+    border-bottom: rgba(68, 68, 68, 0.301) solid 1px;
+    margin-left: 1%;
+}
+
+.logo
+{
+    width: 130px;
+    height: auto;
+    float: left;
+    margin: 10px;
+}
+
+.main-image
+{
+    margin-top: 10%;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 93%;
+    border: white solid 3px;
+    border-radius: 10px;
+}
+
+.button-connexion
+{
+    cursor: pointer;
+    height: 35px;
+    width: 100px;
+    border: #7E9BBF solid 2px;
+    border-radius: 5px;
+    background-color: rgb(230, 241, 250);
+    margin-left: 900%;
+}
+
+.main-container
+{
+    width: 100%;
+    height: auto;
+    padding-top: 100px;
+    display: inline-block;
+}
+
+.left-container
+{
+    float: left;
+    width: 50%;
+    height: 800px;
+}
+
+.right-container
+{
+    float: right;
+    width: 50%;
+    height: 800px;
+}
+
+.right-container p
+{
+    padding-top: 11%;
+    width: 80%;
+    font-family: 'Courier New', Courier, monospace,sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
