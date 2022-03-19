@@ -1,87 +1,76 @@
-from turtle import *
-from random import randint, choice
-import time
+import turtle as t
+import random as rd
 
 def grid():
-    speed(0)
-    pensize(2)
-    pencolor("black")
-    goto(0, -5)
+    # On paramètre la tortue
+    t.speed(0)
+    t.pensize(2)
+    t.color("gray")
+    t.shape("circle")
+    
+    # On trace la grille
+    t.penup()
+    t.goto(-500, -500)
+    t.pendown()
+    
     for i in range(5):
-        circle(i)
-    pencolor("gray")
-    penup()
-    goto(-500, -500)
-    pendown()
-    goto(-500, -500)
-    goto(500, -500)
-    goto(500, 500)
-    goto(-500, 500)
-    goto(-500, -500)
-
-    for i in range(6):
-        pendown()
-        forward(1000)
-        penup()
-        goto(-500, i*100)
-
-    for i in range(6):
-        pendown()
-        forward(1000)
-        penup()
-        goto(-500, i*(-100))
-
-    goto(0, -500)
-    right(90)
-
-    for i in range(6):
-        pendown()
-        forward(1000)
-        penup()
-        goto(i*100, 500)
-
-    for i in range(6):
-        pendown()
-        backward(1000)
-        penup()
-        goto(i*(-100), -500)
-
+        t.setheading(0)
+        t.forward(1000)
+        t.goto(t.xcor(), t.ycor() + 100)
+        t.backward(1000)
+        t.goto(t.xcor(), t.ycor() + 100)
+    
+    t.forward(1000)
+    for i in range(5):
+        t.setheading(270)
+        t.forward(1000)
+        t.goto(t.xcor() - 100, t.ycor())
+        t.backward(1000)
+        t.goto(t.xcor() - 100, t.ycor())
+    t.forward(1000)
 
 def walk():
-    x_or_y = choice([True, False])
-    if x_or_y:
-        return [choice([-100,100]),0]
-    else:
-        return [0, choice([-100,100])]
+    coord = [0, 0]
+    
+    # On re-paramètre la tortue
+    t.speed(5)
+    t.color("red")
+    t.penup()
+    t.hideturtle()
+    t.goto(0, 0)
+    t.showturtle()
+    t.pendown()
 
-def main():
-    grid()
+    # On simule les 4 pas du robot
+    for i in range(4):
+        choice = rd.choice(["i", "j", "-i", "-j"])
+        if choice == "i":
+            coord[0] += 100
+            t.goto(coord[0], coord[1])
+        elif choice == "j":
+            coord[1] += 100
+            t.goto(coord[0], coord[1])
+        elif choice == "-i":
+            coord[0] -= 100
+            t.goto(coord[0], coord[1])
+        elif choice == "-j":
+            coord[1] -= 100
+            t.goto(coord[0], coord[1])
+    return coord
+
+def main(N):
     succes = 0
     count = 0
-    x = 0
-    y = 0
-    pencolor("red")
-    for i in range(300_000):
-        penup()
-        goto(0, 0)
-        pendown()
-        x = 0
-        y = 0
-        for i in range(4):
-            coor = walk()
-            x += coor[0]
-            y += coor[1]
-            goto(int(x),int(y))
-        if x == 0 and y == 0:
+    grid()
+
+    # On répète l'expérience aléatoire N fois
+    for i in range(int(N)):
+        if walk() == [0, 0]:
             succes += 1
         count += 1
-    print(succes, count)
 
-tic = time.perf_counter()
-main()
-toc = time.perf_counter()
-# Print the Difference Minutes and Seconds
-print(f"Build finished in {(toc - tic)/60:0.0f} minutes {(toc - tic)%60:0.0f} seconds")
-# For additional Precision
-print(f"Build finished in {toc - tic:0.4f} seconds")
-done()
+    # On affiche le résultat
+    print("Le robot est revenu", succes,  "fois à sa position initiale avec", count, "essais.")
+    t.done()
+
+main(50)
