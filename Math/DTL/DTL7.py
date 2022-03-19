@@ -74,4 +74,4 @@ def main(N, speed):
     print("Ω = ", succes/count)
     t.done()
 
-main(50, 0)
+main(50, 5)
