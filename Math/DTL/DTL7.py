@@ -29,11 +29,11 @@ def grid():
         t.goto(t.xcor() - 100, t.ycor())
     t.forward(1000)
 
-def walk():
+def walk(speed):
     coord = [0, 0]
     
     # On re-paramètre la tortue
-    t.speed(5)
+    t.speed(speed)
     t.color("red")
     t.penup()
     t.hideturtle()
@@ -58,19 +58,20 @@ def walk():
             t.goto(coord[0], coord[1])
     return coord
 
-def main(N):
+def main(N, speed):
     succes = 0
     count = 0
     grid()
 
     # On répète l'expérience aléatoire N fois
     for i in range(int(N)):
-        if walk() == [0, 0]:
+        if walk(speed) == [0, 0]:
             succes += 1
         count += 1
 
     # On affiche le résultat
     print("Le robot est revenu", succes,  "fois à sa position initiale avec", count, "essais.")
+    print("Ω = ", succes/count)
     t.done()
 
-main(50)
+main(50, 0)
