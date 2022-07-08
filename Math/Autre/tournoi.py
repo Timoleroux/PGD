@@ -1,19 +1,45 @@
 import random as rd
+import itertools as iter
+from unittest import result
 
 def generate_players(nbr_players):
 
-    duos = {}
+    players = {}
+    for i in range(nbr_players):
+        players.append("player" + str(i))
 
-    for i in range(nbr_players-1):
-        # Génère la liste des jouers et leur duo
-        duos[str("duo" + str(i+1))] = ["player" + str(i+1), "player" + str(i+2)]
+    return players
 
-    # Empeche la génération d'un joueur inexistant (player17)
-    duos[str("duo" + str(i+2))] = ["player" + str(i+2), "player" + str(1)]
+def tournoi():
+    
+    liste_de_joueurs = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'] #16 joueurs de 'a' jusqu'a 'p'
+    groupe = iter.combinations(liste_de_joueurs , 4)
+    result = []
+    for equipe in groupe :
+        result.append(equipe)
 
-    return duos
+    return result
 
-def tournoi(nbr_players):
+
+print(tournoi())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def tournoi_(nbr_players):
 
     duos = generate_players(nbr_players)
     print(duos)
@@ -46,5 +72,3 @@ def tournoi(nbr_players):
     # Affiche les scores de chaque duo
     for i in range(nbr_players):
         print("Le duo", str(i+1), "a gagné", len(duos["duo" + str(i+1)])-2, "duels")
-
-tournoi(16)
